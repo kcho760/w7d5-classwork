@@ -28,7 +28,7 @@ class User < ApplicationRecord
     end
 
     def generate_unique_session_token
-        session_token = RandomSecure::urlsafe_base64(16)
+        self.session_token = RandomSecure::urlsafe_base64(16)
     end
 
     def reset_session_token!

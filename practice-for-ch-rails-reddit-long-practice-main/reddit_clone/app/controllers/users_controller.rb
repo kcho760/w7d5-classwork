@@ -28,6 +28,7 @@ class UsersControllers < ApplicationController
         @user.delete
         redirect_to new_session_url
     end
+    
     private
     def user_params
         params.require(:user).permit(:username, :password)

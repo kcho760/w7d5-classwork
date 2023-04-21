@@ -1,4 +1,4 @@
-class SessionsController > ApplicationController
+class SessionsController < ApplicationController
 
     before_action :require_logged_in, only: [:destroy]
 
@@ -8,21 +8,21 @@ class SessionsController > ApplicationController
     end
 
     def create
-    @user = User.find_by_credentials (
-        params[:user][:username]
-        params[:user][:password]
-        )
+        @user = User.find_by_credentials (
+            params[:user][:username]
+            params[:user][:password]
+            )
 
-    if @user
-        login!(user)
-        redirect_to user_url(@user)
-    else
-        flash.new[:errors] = @user.error.full_messages
-        render :new
-
+        if @user
+            login!(user)
+            redirect_to user_url(@user)
+        else
+            flash.new[:errors] = @user.errors.full_messages
+            render :new
+        end
     end
 
-    def destroy
+    # def destroy
 
-    end
+    # end
 end
